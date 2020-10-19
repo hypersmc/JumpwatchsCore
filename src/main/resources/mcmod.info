@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hypercore",
+  "name": "HyperCore",
+  "description": "This core is just to help The Immersive Tech, The Unknown Tech and The Beginning 2 to work at all.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["HypersMC", "JumpWatch"],
+  "credits": "",
+  "logoFile": "assets/hypercore/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
