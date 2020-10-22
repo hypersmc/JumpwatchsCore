@@ -70,7 +70,8 @@ public class CableTileEntity extends TileEntity implements ITickable, IEnergyRec
         losses.put(EnumCableType.C20, 0); capacities.put(EnumCableType.C20, 16777216);
 }
 
-    public static AxisAlignedBB[] coveredBoxes = {new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.25, 0.75),
+    public static AxisAlignedBB[] coveredBoxes = {
+            new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.25, 0.75),
             new AxisAlignedBB(0.25, 0.75, 0.25, 0.75, 1, 0.75),
             new AxisAlignedBB(0.25, 0.25, 0, 0.75, 0.75, 0.25),
             new AxisAlignedBB(0.25, 0.25, 0.75, 0.75, 0.75, 1),
