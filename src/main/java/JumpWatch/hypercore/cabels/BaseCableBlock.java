@@ -158,8 +158,8 @@ public class BaseCableBlock extends Block{
         return farRay;
     }
 
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (player.inventory.getCurrentItem() != null) {
             Item item = player.inventory.getCurrentItem().getItem();
             CableTileEntity tileEntity = (CableTileEntity) world.getTileEntity(pos);

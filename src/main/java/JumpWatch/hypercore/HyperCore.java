@@ -1,6 +1,7 @@
 package JumpWatch.hypercore;
 
 import JumpWatch.hypercore.cabels.BaseCableBlock;
+import JumpWatch.hypercore.cabels.FluidBaseCableBlock;
 import JumpWatch.hypercore.cabels.tileentities.CableTileEntity;
 import JumpWatch.hypercore.lib.*;
 import JumpWatch.hypercore.lib.MultiBlock.ModelUtils;
@@ -83,6 +84,7 @@ public class HyperCore {
     public static ModHelperHyperCore ModHelperHyperCore(){ return ModHelperHyperCore(); }
     public static EnumCableType EnumCableType(){ return EnumCableType(); }
     public static BaseCableBlock BaseCableBlock(){ return BaseCableBlock(); }
+    public static FluidBaseCableBlock FluidBaseCableBlock(){ return FluidBaseCableBlock(); }
     public static CableTileEntity CableTileEntity(){ return CableTileEntity(); }
     public static MultiBlockTools MultiBlockTools() { return MultiBlockTools(); }
     public static IMultiBlockType IMultiBlockType() { return IMultiBlockType(); }
