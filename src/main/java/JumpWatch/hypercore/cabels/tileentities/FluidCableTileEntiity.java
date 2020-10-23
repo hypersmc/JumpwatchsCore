@@ -31,8 +31,7 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable {
             new AxisAlignedBB(0.6875, 0.3125, 0.3125, 1, 0.6875, 0.6875)
     };
     public static String[] sideStates = {"no restrictions", "input only", "output only", "disabled"};
-    @Override
-    public int receiveFluid(EnumFacing from, FluidStack fluid, boolean simulate) {
+    public int fill(EnumFacing from, FluidStack fluid, boolean simulate) {
         if (from == null) {
             int fluidReceived = tank.fillInternal(fluid, simulate);
             if (this.tank.getFluidAmount() > this.max){
@@ -59,8 +58,7 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable {
             return 0;
         }
     }
-    @Override
-    public int extractFluid(EnumFacing from, FluidStack fluid, boolean simulate) {
+    public int drainInternal(EnumFacing from, FluidStack fluid, boolean simulate) {
         if (from == null) {
             return Math.max(0, tank.drainInternal(fluid, simulate));
         }
