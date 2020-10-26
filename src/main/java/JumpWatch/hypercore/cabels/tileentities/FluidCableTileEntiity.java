@@ -1,5 +1,6 @@
 package JumpWatch.hypercore.cabels.tileentities;
 
+import JumpWatch.hypercore.ModSettings;
 import JumpWatch.hypercore.utils.EnumCableType;
 import JumpWatch.hypercore.utils.helplogger;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
@@ -26,7 +27,7 @@ import java.util.Map;
 
 public class FluidCableTileEntiity extends TileEntity implements ITickable, IFluidHandler {
     private EnumCableType cableTypes;
-    protected FluidTank tank = new FluidTank(10);
+    protected FluidTank tank = new FluidTank(ModSettings.fluidCableProperties.FluidAmount);
     private int max = 1000;
     private List sidesReceivedFrom = new ArrayList();
     private List sides = new IntArrayList();
@@ -178,9 +179,9 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable, IFlu
                         //FluidStack stack;
                         IFluidHandler handler = tileEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
                         if (tank.getFluidAmount() < 1) {
-                            FluidUtil.tryFluidTransfer(tank, handler, 20, true);
+                            FluidUtil.tryFluidTransfer(tank, handler, ModSettings.fluidCableProperties.FluidTransfer, true);
                         }else {
-                            FluidUtil.tryFluidTransfer(handler, tank, 20, true);
+                            FluidUtil.tryFluidTransfer(handler, tank, ModSettings.fluidCableProperties.FluidTransfer, true);
 
                         }
                         //tank.drain(handler.fill(tank.drain(20, false), true), true);
