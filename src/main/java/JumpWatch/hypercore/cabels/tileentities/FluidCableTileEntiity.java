@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FluidCableTileEntiity extends TileEntity implements ITickable, IFluidHandler {
+public class FluidCableTileEntiity extends TileEntity implements ITickable, IFluidHandler, IFluidTank {
     private EnumCableType cableTypes;
     protected FluidTank tank = new FluidTank(ModSettings.fluidCableProperties.FluidAmount);
     private int max = 1000;
@@ -175,14 +175,18 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable, IFlu
                 if (this.world.getTileEntity(this.getPos().add(offset)) != null) {
                     TileEntity tileEntity = this.world.getTileEntity(this.getPos().add(offset));
                     if ((tileEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite()))) {
-                        helplogger.info("We got this far");
+                        //helplogger.info("We got this far");
                         //FluidStack stack;
                         IFluidHandler handler = tileEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
-                        if (tank.getFluidAmount() < 1) {
+                        if (!(tank.getFluid() == ((IFluidTank) tileEntity).getFluid())){
                             FluidUtil.tryFluidTransfer(tank, handler, ModSettings.fluidCableProperties.FluidTransfer, true);
-                        }else {
-                            FluidUtil.tryFluidTransfer(handler, tank, ModSettings.fluidCableProperties.FluidTransfer, true);
+                        } else {
+                            if (tank.getFluidAmount() < 200) {
+                                FluidUtil.tryFluidTransfer(tank, handler, ModSettings.fluidCableProperties.FluidTransfer, true);
+                            } else {
+                                FluidUtil.tryFluidTransfer(handler, tank, ModSettings.fluidCableProperties.FluidTransfer, true);
 
+                            }
                         }
                         //tank.drain(handler.fill(tank.drain(20, false), true), true);
                         //helplogger.info("Draining shuld have been doine now!");
@@ -214,7 +218,7 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable, IFlu
                 this.rendersides.add(this.sides.get(i));
             }
         }
-
+        /*
         if (this.tank.getFluidAmount() > 0) {
             if (fluidSplit > 0) {
                 int fluidtotrabsnut = (int) Math.floor(this.tank.getFluidAmount() / fluidSplit);
@@ -280,7 +284,7 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable, IFlu
                     }
                 }
             }
-        }
+        }*/
 
         boxes.clear();
         if (this.covered) {
@@ -368,6 +372,26 @@ public class FluidCableTileEntiity extends TileEntity implements ITickable, IFlu
     @Override
     public IFluidTankProperties[] getTankProperties() {
         return new IFluidTankProperties[0];
+    }
+
+    @Override
+    public FluidStack getFluid() {
+        return null;
+    }
+
+    @Override
+    public int getFluidAmount() {
+        return 0;
+    }
+
+    @Override
+    public int getCapacity() {
+        return 0;
+    }
+
+    @Override
+    public FluidTankInfo getInfo() {
+        return null;
     }
 
     @Override
