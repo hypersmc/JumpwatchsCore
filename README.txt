@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/hypersmc/JumpwatchsCore.svg?branch=master)](https://travis-ci.org/hypersmc/JumpwatchsCore)
+
+
+
 -------------------------------------------
 Source installation information for modders
 -------------------------------------------
